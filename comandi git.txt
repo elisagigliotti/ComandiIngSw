@@ -33,3 +33,9 @@ SE ti chiede l'autorizzazione: git config --global user.email "you@example.com" 
 POI rifai il commit
 git remote add origin <link>
 
+
+# Assicurati di essere nel branch "main"
+git checkout main
+
+# Esegui il merge del branch "dev" in "main"
+git merge dev
