@@ -39,3 +39,6 @@ git checkout main
 
 # Esegui il merge del branch "dev" in "main"
 git merge dev
+
+ignora la cartella "target"
+echo "target/" >> .gitignore
