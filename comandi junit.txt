@@ -1,0 +1,32 @@
+Annotazioni per definire i test:
+1. `@Test`: Utilizzata per contrassegnare un metodo come un test.
+2. `@BeforeEach`: Indica un metodo da eseguire prima di ciascun test.
+3. `@AfterEach`: Indica un metodo da eseguire dopo ciascun test.
+4. `@BeforeAll`: Indica un metodo da eseguire una sola volta prima di tutti i test nella classe.
+5. `@AfterAll`: Indica un metodo da eseguire una sola volta dopo tutti i test nella classe.
+6. `@DisplayName`: Per fornire un nome personalizzato per un test.
+7. `@Disabled`: Contrassegna un test come disabilitato in modo che non venga eseguito.
+
+Annotazioni per organizzare e eseguire test:
+8. `@Nested`: Per creare classi nidificate per organizzare i test.
+9. `@TestFactory`: Utilizzata per creare test dinamici.
+10. `@ParameterizedTest`: Utilizzata per test parametrici.
+11. `@EnumSource`: Per test parametrici basati su enum.
+12. `@MethodSource`: Per test parametrici basati su metodi.
+13. `@CsvSource`, `@CsvFileSource`: Per test parametrici basati su dati CSV.
+14. `@RepeatedTest`: Per ripetere un test un numero specifico di volte.
+
+Assert e asserzioni:
+15. `assertNotNull`, `assertNull`: Per verificare se un oggetto è non nullo o nullo.
+16. `assertEquals`, `assertNotEquals`: Per verificare l'uguaglianza di oggetti.
+17. `assertTrue`, `assertFalse`: Per verificare condizioni booleane.
+18. `assertArrayEquals`: Per verificare l'uguaglianza di array.
+19. `assertThrows`: Per verificare che un'eccezione sia lanciata.
+
+Estensioni:
+20. `@ExtendWith`: Utilizzata per collegare estensioni personalizzate ai test.
+21. Estensioni predefinite come `SpringExtension`, `ParameterResolver`, `TestInstancePostProcessor`, ecc.
+
+API per il ciclo di vita dei test:
+22. `TestInfo`: Fornisce informazioni sul test corrente.
+23. `TestReporter`: Utilizzato per registrare informazioni aggiuntive sui test.

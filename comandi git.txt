@@ -1,0 +1,35 @@
+DIPENDENZE:
+COPIA IL FILE POM DEL PROF
+
+git init nella cartella
+git status
+git add -A per aggiungere tutto
+git commit -m "Initial commit"
+git status (branch main)
+git remote add origin(=nome del remoto) linkRepository
+git push origin main 
+
+scaricare/clonare da git
+git clone link
+
+sincronizzare branch sul pc:
+git fetch mostra tutti i branch presenti scaricati dal repository remoto nella tua copia locale (da fare prima degli altri sennò non fa vedere i branch)
+git branch -a mostra tutti i branch
+git branch -r mostra tutti i branch remoti
+git checkout "nome branch" ti sposta nel branch corrispondente
+git checkout -b "nome brach" crea un branch nel terminale
+git push origin
+
+caricare un progetto già esistente su git
+git -> github-> share
+
+caricare un progetto già esistente su una repository già esistente:
+git init
+git status
+git add .
+git commit -m "commento"
+SE ti chiede l'autorizzazione: git config --global user.email "you@example.com" elisagigliotti2002@gmail.com
+			       git config --global user.name "Your Name" elisagigliotti
+POI rifai il commit
+git remote add origin <link>
+

@@ -1,0 +1,122 @@
+//creare un oggetto mock
+YourType mock = mock(YourType.class);
+
+// Quando il metodo viene chiamato con l'argomento specificato, restituisce il risultato specificato
+when(mock.methodCall(arg)).thenReturn(result); 
+
+// Quando il metodo viene chiamato con l'argomento specificato, solleva l'eccezione specificata
+doThrow(exception).when(mock).methodCall(arg);
+
+// Verifica che il metodo sia stato chiamato con gli argomenti specificati
+verify(mock).methodCall(arg);
+
+// Verifica che il metodo sia stato chiamato esattamente due volte con gli argomenti specificati
+verify(mock, times(2)).methodCall(arg); 
+
+// Verifica che il metodo sia stato chiamato almeno una volta con gli argomenti specificati
+verify(mock, atLeastOnce()).methodCall(arg); 
+
+//Verificare che nessun metodo sia stato chiamato
+verifyZeroInteractions(mock); 
+
+//Verificare che non ci siano altre chiamate ai metodi oltre a quelle verificate
+verifyNoMoreInteractions(mock); 
+
+//Verificare l'ordine delle chiamate ai metodi
+InOrder inOrder = inOrder(mock);
+inOrder.verify(mock).firstMethod();
+inOrder.verify(mock).secondMethod();
+
+//Catturare gli argomenti passati ai metodi
+ArgumentCaptor<Type> argumentCaptor = ArgumentCaptor.forClass(Type.class);
+verify(mock).methodCall(argumentCaptor.capture());
+Type capturedArgument = argumentCaptor.getValue();
+
+//Reset mock
+reset(mock);
+
+//Creare un mock spy(oggetto reale con alcune chiamate intercettate)
+YourType spy = spy(realObject);
+//metodi per configurare il mock spy
+doReturn(result).when(spy).methodCall(arg);
+doThrow(exception).when(spy).methodCall(arg);
+
+
+ESERCIZIO ESEMPIO:
+//LA CLASSE
+public class Calculator {
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public int subtract(int a, int b) {
+        return a - b;
+    }
+}
+
+//IL TEST
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+public class CalculatorTest {
+
+    //se vuoi provare la classe runnalo solo
+    @Test
+    void testNoInteraction(){
+        Calculator calculator = mock(Calculator.class);
+        // Esempio di chiamata simulata al mock (questa parte è facoltativa perché se la metti fallisce il test sennò va)
+        //calculatorService.add(2, 3);
+
+        // Verifica che non ci siano altre interazioni con il mock
+        verifyNoMoreInteractions(calculator);
+    }
+
+    @Test
+    void testReset(){
+        Calculator calculator = mock(Calculator.class);
+        // Reset del mock per eliminare tutte le interazioni precedenti
+        reset(calculator);
+
+        // Verifica che il mock sia stato resettato (nessuna interazione)
+        verifyNoMoreInteractions(calculator);
+    }
+
+    @Test
+    void testCalculatorADD() {
+        Calculator calculator = mock(Calculator.class);
+
+        // Configurazione del comportamento del mock
+        when(calculator.add(2, 3)).thenReturn(5);
+
+        // Esecuzione dei metodi della classe Calculator
+        int additionResult = calculator.add(2, 3);
+
+        // Verifica che i risultati siano corretti
+        assertEquals(5, additionResult);
+
+        // Verifica delle chiamate ai metodi e dei loro argomenti
+        verify(calculator).add(2, 3);
+
+    }
+
+    @Test
+    void TestCalculatorSUBSTRACT(){
+        Calculator calculator = mock(Calculator.class);
+
+        // Configurazione del comportamento del mock
+        when(calculator.subtract(8, 4)).thenReturn(4);
+
+        // Esecuzione dei metodi della classe Calculator
+        int subtractionResult = calculator.subtract(8, 4);
+
+        // Verifica che i risultati siano corretti
+        assertEquals(4, subtractionResult);
+
+        // Verifica delle chiamate ai metodi e dei loro argomenti
+        verify(calculator).subtract(8, 4);
+
+    }
+}
+
